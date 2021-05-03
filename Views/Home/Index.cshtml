@@ -1,0 +1,44 @@
+﻿@using System;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <div class="row">
+        <div class="col">
+            <h1 class="display-4">Player 1</h1>
+            <hr>
+
+            @for (int i = 0; i < ViewBag.Hand.Count; i++)
+            {
+                if(ViewBag.Hand[i].ImgURL == "https://deckofcardsapi.com/static/img/AD.png")
+                {
+                    <img src="AD.png" alt="ace of diamonds">
+                }
+                else
+                {
+                    <img src=@ViewBag.Hand[i].ImgURL alt=@ViewBag.Hand[i]>
+                }
+            }            
+            <h3>Score: @ViewBag.playerScore</h3>
+        </div>
+        <div class="col">
+            <h1 class="display-4">Dealer</h1>
+            <hr>
+            
+            @for(int i = 0; i < ViewBag.Dealer.Count; i++)
+            {
+                if(ViewBag.Dealer[i].ImgURL == "https://deckofcardsapi.com/static/img/AD.png")
+                {
+                    <img src="AD.png" alt="ace of diamonds">
+                }
+                else
+                {
+                    <img src=@ViewBag.Dealer[i].ImgURL alt=@ViewBag.Dealer[i]>
+                }
+            }
+            <h3>Score: @ViewBag.dealerScore</h3>
+        </div>
+    </div>
+    <a href="/"><button class="btn btn-primary">New Hand</button></a>
+</div>
