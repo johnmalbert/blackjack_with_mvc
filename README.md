@@ -6,7 +6,8 @@ An application of OOP combined with MVC in C#
 The start of a cool application, still needing some tune ups. 
 
 Clone the repo
-``` git clone https://github.com/johnmalbert/blackjack_with_mvc/ 
+``` 
+    git clone https://github.com/johnmalbert/blackjack_with_mvc/ 
     cd blackjack_with_mvc
     dotnet run
 ```
