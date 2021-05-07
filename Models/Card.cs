@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Cards.Models
 {
-    public class Card
+    public class Card 
     {
         [Key]
         public int CardId { get; set; }
@@ -33,7 +33,8 @@ namespace Cards.Models
             string suitLetter = suit[0].ToString();
             ImgURL = "https://deckofcardsapi.com/static/img/" + faceLetter + "" + suitLetter + ".png";
         }
-        
+        public Card(){}        
+
         public override string ToString()
         {
             return $"{Face} of {Suit}";

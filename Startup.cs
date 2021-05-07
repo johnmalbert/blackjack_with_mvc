@@ -37,8 +37,8 @@ namespace Cards
                 app.UseDeveloperExceptionPage();
             }
             app.UseStaticFiles();
-            app.UseMvc();
             app.UseSession();
+            app.UseMvc();
         }
     }
 }

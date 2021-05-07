@@ -14,6 +14,7 @@ namespace Cards.Models
 
         public Deck()
         {
+            Console.WriteLine("Creating the deck.");
             List<string> Suits = new List<string>()
             {
                 "Spades","Diamonds","Hearts","Clubs"
@@ -29,13 +30,15 @@ namespace Cards.Models
             {
                 "Ace","2","3","4","5","6","7","8","9","10","Jack","Queen","King"
             };
-
-            CardsInDeck = new List<Card>();
-            for (int i = 0; i < Suits.Count; i++)
+            if(CardsInDeck == null)
             {
-                for (int j = 0; j < Values.Count; j++)
+                CardsInDeck = new List<Card>();
+                for (int i = 0; i < Suits.Count; i++)
                 {
-                    CardsInDeck.Add(new Card(Faces[j],Suits[i],Values[j]));
+                    for (int j = 0; j < Values.Count; j++)
+                    {
+                        CardsInDeck.Add(new Card(Faces[j],Suits[i],Values[j]));
+                    }
                 }
             }
         }

@@ -21,14 +21,22 @@
                 }
             }            
             <h3>Score: @ViewBag.playerScore</h3>
+            <h3>
+                <button class="btn btn-warning"><a asp-action="Hit"> Hit </a></button>
+                <button class="btn btn-success"><a asp-action="Stay"> Stay</a></button>
+            </h3>
         </div>
         <div class="col">
             <h1 class="display-4">Dealer</h1>
             <hr>
             
-            @for(int i = 0; i < ViewBag.Dealer.Count; i++)
+            @for(int i = ViewBag.Dealer.Count - 1; i >= 0; i--)
             {
-                if(ViewBag.Dealer[i].ImgURL == "https://deckofcardsapi.com/static/img/AD.png")
+                if(ViewBag.Dealer[i].Shown == false)
+                {
+                    <img src="dealer.jpg" alt="Dealer's First Card">
+                }
+                else if(ViewBag.Dealer[i].ImgURL == "https://deckofcardsapi.com/static/img/AD.png")
                 {
                     <img src="AD.png" alt="ace of diamonds">
                 }
@@ -37,7 +45,14 @@
                     <img src=@ViewBag.Dealer[i].ImgURL alt=@ViewBag.Dealer[i]>
                 }
             }
-            <h3>Score: @ViewBag.dealerScore</h3>
+            @if(ViewBag.Display == false)
+            {
+                <h3>Score:</h3>
+            }
+            else
+            {
+                <h3>Score: @ViewBag.dealerScore</h3>
+            }
         </div>
     </div>
     <a href="/"><button class="btn btn-primary">New Hand</button></a>
