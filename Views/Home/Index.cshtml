@@ -22,7 +22,14 @@
             }            
             <h3>Score: @ViewBag.playerScore</h3>
             <h3>
-                <button class="btn btn-warning"><a asp-action="Hit"> Hit </a></button>
+                @{
+                    string[] scores = ViewBag.playerScore.Split(",");
+                    int lowestScore = Int32.Parse(scores[0]);
+                    if(lowestScore < 21)
+                    {
+                        <a asp-action="Hit"><button class="btn btn-warning"> Hit </button></a>
+                    }
+                }
                 <button class="btn btn-success"><a asp-action="Stay"> Stay</a></button>
             </h3>
         </div>
