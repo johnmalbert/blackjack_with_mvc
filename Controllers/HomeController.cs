@@ -34,9 +34,9 @@ namespace Cards.Controllers
             player1Cards.Add(new CardInHand(secondCard.Face, secondCard.Suit, secondCard.Value, secondCard.ImgURL));
             player1.CardsInHand = player1Cards;
             string playerScore = getScoreFromHand(player1.CardsInHand);
-
             Player dealer = new Player();
             List<CardInHand> dealerCards = new List<CardInHand>();
+            
             firstCard = deck.Deal();
             secondCard = deck.Deal();
             
@@ -143,7 +143,20 @@ namespace Cards.Controllers
 
             string playerScore = getScoreFromHand(player1.CardsInHand);
             string dealerScore = getScoreFromHand(dealer.CardsInHand);
+
+            Console.WriteLine(dealerScore);
+            List<int> dealerScoreList = getScoreFromString(dealerScore);
+            foreach(var _ in dealerScoreList)
+                Console.WriteLine(_);
             
+            while(dealerScoreList[0] < 17)
+            {
+                //deal the card to dealer
+                Card hitCard = deck.Deal();
+                dealer.CardsInHand.Add(new CardInHand(hitCard.Face, hitCard.Suit, hitCard.Value, hitCard.ImgURL));
+                dealerScore = getScoreFromHand(dealer.CardsInHand);
+                dealerScoreList = getScoreFromString(dealerScore);
+            }
             ViewBag.Hand = player1.CardsInHand;
             ViewBag.Dealer = dealer.CardsInHand;
             ViewBag.Display = true;
@@ -198,5 +211,14 @@ namespace Cards.Controllers
             }
         }
         
+        public List<int> getScoreFromString(string score)
+        {
+            string[] scoreString = score.Split(",");
+            List<int> returnInt = new List<int>();
+            foreach(var s in scoreString)
+                returnInt.Add(Int32.Parse(s));               
+
+            return returnInt;
+        }
     }
 }

@@ -49,7 +49,6 @@ namespace Cards.Models
             {
                 Card card_to_deal = this.CardsInDeck[0];
                 this.CardsInDeck.RemoveAt(0);
-                Console.WriteLine($"Dealt the {card_to_deal}");
                 return card_to_deal;                
             }
             else 

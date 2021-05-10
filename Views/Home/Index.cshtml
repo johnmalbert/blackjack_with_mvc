@@ -1,4 +1,5 @@
 ﻿@using System;
+@using System.Threading;
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -25,6 +26,7 @@
                 @{
                     string[] scores = ViewBag.playerScore.Split(",");
                     int lowestScore = Int32.Parse(scores[0]);
+                    
                     if(lowestScore < 21)
                     {
                         <a asp-action="Hit"><button class="btn btn-warning"> Hit </button></a>
